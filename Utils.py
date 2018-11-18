@@ -14,10 +14,6 @@ def save_time(project_number, new_time, path = sys.path[0]+"/times.txt"):
 def isPrime(n):
     return isprime(n)
 
-def primefactors(n):
-    from sympy.ntheory import factorint
-    return factorint(n)
-
 # returns unsorted list of primefactors
 # if n is prime returns [n]
 def primefactors_pollard_rho(n):
@@ -45,7 +41,7 @@ def next_factor(n):
     g,r,q = 1,1,1
     while g==1:             
             x = y
-            for i in range(r):
+            for _ in range(r):
                     y = ((y*y)%n+c)%n
             k = 0
             while (k<r and g==1):
@@ -106,13 +102,16 @@ def divisor_function(n):
 # σ(a×b×...)=σ(a)×σ(b)×...
 def sum_of_proper_divisors(n):
     from numpy import prod
-    
-    factors = primefactors(n)
+    from sympy import factorint
+
+    factors = factorint(n)
     return prod([int((i[0]**(i[1]+1)-1)/(i[0]-1)) for i in factors.items()])
 
 # euler totient function, number of numbers relative prime to n
 def euler_totient(n):
-    factors = primefactors(n)
+    from sympy import factorint
+
+    factors = factorint(n)
     prod = n
     for i in factors.keys():
         prod *= (1-(1/i))
@@ -166,3 +165,17 @@ def isPalindrom(s):
     if(s==s[::-1]):
       return True
     return False
+
+# returns index of value in a sorted list, if value not in list returns -1
+def bisect(value,list):
+    left = 0
+    right = len(list) - 1
+    while left <= right:
+        check = int((left+right)/2)
+        if list[check] == value:
+            return check
+        elif list[check] < value:
+            left = check + 1
+        else:
+            right = check - 1
+    return -1

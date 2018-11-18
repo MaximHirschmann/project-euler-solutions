@@ -1,56 +1,42 @@
-from Utils import save_time
-from time import time
 from Utils import sieve_of_eratosthenes
-from itertools import product
 from sympy import isprime
 
-start = time()
-
-# replace 1's keep 0's
-def count(perm):
-    max = 0
-    max_num = 0
-    digits = ("1","2","3","4","5","6","7","8","9","0")
-    length = sum([1 for j in perm if j == '0'])
-    if length == len(perm):
-        return (0,0)
-    for numbers in perms_digits[length]:
-        res = 0
-        for digit in digits:
-            # TODO change
-            new = ''
-            count2 = 0
-            for i in range(len(perm)):
-                if perm[i] == '0':
-                    new += numbers[count2]
-                    count2 += 1
-                else: # perm[i] == '1'
-                    new += digit
-            if isprime(int(new)):
-                res += 1
-        if res > max:
-            max = res
-            max_num = numbers
-    return (max, max_num)
+def number_primes(number ,binary):
+    count = 0
+    last_prime = 0
+    number = str(number)
+    for digit in ('9','8','7','6','5','4','3','2','1','0'):
+        new = ''
+        for b in range(len(binary)):
+            if binary[b] == '1':
+                new += str(digit)
+            else:
+                new += number[b]
+        new += number[-1]
+        if isprime(int(new)) and new[0] != '0':
+            last_prime = new
+            count += 1
+    return (count, last_prime)
 
 def run():
-    for perms in perms_all.values():
-        for perm in perms:
-            res = count(perm)
-            print(res, perm)
+    sieve = sieve_of_eratosthenes(1000000, lower_limit = 10)
+    # builds masks
+    bins = {}
+    for i in range(1,7):
+        all_bins = [bin(x)[2:] for x in range(1,2**i)]
+        new = []
+        # there have to be 3 digits to replace otherwise at least 3 would not be prime
+        for j in all_bins:
+            count = sum([1 for k in j if k == '1'])
+            if count == 3:
+                new.append(j)
+        bins[i] = new
+    
+    for prime in sieve:
+        binaries = bins[len(str(prime))-1]
+        for b in binaries:
+            res = number_primes(prime,b)
             if res[0] == 8:
-                num = ''
-                count2 = 0
-                for j in perm:
-                    if j == '0':
-                        num += res[1][count2]
-                        count2 += 1
-                    else:
-                        num += '1'
-                return num
+                return res[1]
 
-digits = ("1","2","3","4","5","6","7","8","9","0")
-perms_all = {i:product(('0','1'), repeat = i) for i in range(1,7)}
-perms_digits = {i:list(product(digits, repeat = i)) for i in range(7)}
 print(run())
-save_time(51,time()-start)

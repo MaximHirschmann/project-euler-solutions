@@ -1,23 +1,13 @@
-from time import time
-from Utils import save_time
+from Utils import isPalindrom
 
-start = time()
-def isPalindrom(n):
-    s=str(n)
-    if(s==s[::-1]):
-      return True
-    return False
-
-max = 0
+res = 0
 for i in reversed(range(100,1000)):
-    if i * 999 <= max:
+    if i * 999 <= res:
         break
     for j in reversed(range(i,1000)):
         product = i * j
-        if product <= max:
+        if product <= res:
             break
-        if isPalindrom(product):
-            max = product
-print(max)
-end = time()
-save_time(4,end-start)
+        if isPalindrom(str(product)):
+            res = product
+print(res)

@@ -1,7 +1,3 @@
-from time import time
-from Utils import save_time
-
-start = time()
 def fib(k):
     global table
     try:
@@ -23,5 +19,3 @@ while True:
     count += 1
 
 print("The sum is: ",sum)
-end = time()
-save_time(2,end-start)

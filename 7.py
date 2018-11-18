@@ -1,19 +1,14 @@
-from Utils import isPrime
-from Utils import save_time
-from time import time
+from sympy import isprime
 
-start = time()
-
-def prime_number(n):
+# counts prime numbers up to n
+def prime_numbers(n):
     count = 0
     i = 0
     while True:
-        if isPrime(i):
+        if isprime(i):
             count += 1
             if count == n:
                 return i
         i += 1
 
-print(prime_number(10001))
-end = time()
-save_time(7,end-start)
+print(prime_numbers(10001))

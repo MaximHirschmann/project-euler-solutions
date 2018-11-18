@@ -1,8 +1,4 @@
-from Utils import save_time
-from time import time
 from itertools import permutations
-
-start = time()
 
 # does not check for 5 because only gets divisible-by-5-numbers
 def isdivisible(s):
@@ -30,5 +26,3 @@ for i in perms:
         res += int(num)
 
 print(res)
-print(time()-start)
-save_time(43,time()-start)

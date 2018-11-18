@@ -1,23 +1,7 @@
-from Utils import save_time
 from Utils import sieve_of_eratosthenes
+from Utils import bisect
 from itertools import product
-from time import time
 from sympy import isprime
-
-start = time()
-
-def bisect(value,list):
-    left=0
-    right=len(list)-1
-    while left<=right:
-        check=int((left+right)/2)
-        if list[check]==value:
-            return check
-        elif list[check]<value:
-            left=check+1
-        else:
-            right=check-1
-    return -1
 
 def samedigits(a,b):
     a = sorted(str(a))
@@ -38,5 +22,3 @@ for i in range(len(sieve)-1):
                     concat = str(prime1)+str(prime2)+str(prime3)
                     if concat != '148748178147':
                         print(concat)
-
-save_time(49,time()-start)

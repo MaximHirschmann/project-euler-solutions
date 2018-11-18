@@ -1,14 +1,10 @@
-from Utils import isPrime
+from sympy import isprime
 from Utils import sieve_of_eratosthenes
-from Utils import save_time
-from time import time
-
-start = time()
 
 # where f(n) = n^2 + a*n + b
 def number_of_primes(a,b):
     n = 0
-    while(isPrime(n*n+a*n+b)):
+    while(isprime(n*n+a*n+b)):
         n += 1
     return n
 
@@ -29,6 +25,5 @@ for a in range(-999,1000,2):
             max_b = b
 print('The function f(n) = n^2 +',max_a,'* n +', max_b,' produces with',max_count,'the most primes')
 print('Product:',max_a * max_b)
-save_time(27,time()-start)
       
 

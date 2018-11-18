@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 pyramid = []
 with open("storage//18_pyramid.txt",'r') as f:
     for line in f:
@@ -29,5 +24,3 @@ while i > 1:
     printpyramid(pyramid)
 
 print('Number:', pyramid[0][0])
-end = time()
-save_time(18,end-start)

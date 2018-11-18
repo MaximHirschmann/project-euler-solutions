@@ -1,8 +1,4 @@
-from Utils import save_time
-from time import time
 import sys
-
-start = time()
 
 class Grid:
     def __init__(self, grid, adjacant_digits = 4):
@@ -61,6 +57,3 @@ with open(sys.path[0]+"/storage/11.txt","r") as f:
 g = Grid(grid)
 g.max_grid()
 print("Max:",g.max)
-
-end = time()
-save_time(11,end-start)

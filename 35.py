@@ -1,8 +1,4 @@
-from Utils import save_time
-from time import time
 from Utils import sieve_of_eratosthenes
-
-start = time()
 
 def rotate(s):
     return s[len(s)-1]+s[:len(s)-1]
@@ -29,4 +25,3 @@ for i in sieve:
             
 
 print(len(set(circular_primes)))
-save_time(35,time()-start)

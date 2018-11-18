@@ -1,8 +1,4 @@
-from Utils import save_time
-from time import time
 from sympy.ntheory import primefactors
-
-start = time()
 
 def length4(n):
     if n in table:
@@ -24,6 +20,3 @@ while True:
         print(i)
         break
     i += 1
-
-
-save_time(47,time()-start)

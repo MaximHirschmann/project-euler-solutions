@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 # hexagonal(n) equals triangle(2n)
 def triangle(n):
     return n*(n-1)/2
@@ -19,4 +14,3 @@ while count < 2:
         count += 1
     i += 2
 print(int(triangle(i-2)))
-save_time(45, time()-start)

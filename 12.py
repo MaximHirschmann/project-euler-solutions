@@ -1,14 +1,9 @@
-from time import time
-from Utils import save_time
 from Utils import divisor_function
 
-start = time()
-
 def triangle_number(k):
-    global table
-    try:
+    if k in table:
         return table[k]
-    except KeyError:
+    else:
         number = triangle_number(k-1) + k
         table[k] = number
         return number
@@ -21,6 +16,3 @@ while True:
         print(n)
         break
     k += 1
-
-end = time()
-save_time(12, end-start)

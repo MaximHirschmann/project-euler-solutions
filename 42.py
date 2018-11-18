@@ -1,8 +1,4 @@
-from Utils import save_time
-from time import time
 from math import sqrt
-
-start = time()
 
 def isTriangleWord(s):
     return isTriangle(name_score(s))
@@ -19,4 +15,3 @@ def name_score(name):
 with open('storage//42_words.txt','r') as f:
     words = eval(f.read())
 print(sum([1 for i in words if isTriangleWord(i)]))
-save_time(42,time()-start)

@@ -1,7 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
 # right triangle
 def sides_with_perimeter(p):
     count = 0
@@ -23,4 +19,3 @@ for i in range(12,1001):
         max_index = i
 
 print('The number',max_index,'with a length of',max_length)
-save_time(39,time()-start)

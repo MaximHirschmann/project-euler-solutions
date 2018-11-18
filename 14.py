@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 def collatz_length(n):
     global table
     save = n
@@ -27,6 +22,3 @@ for i in range(1,1000000):
         max = length
         index = i
 print(index)
-
-end = time()
-save_time(14,end-start)

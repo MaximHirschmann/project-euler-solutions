@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 def sum_of_power_digits(n, power):
     digits = []
     while n != 0:
@@ -22,5 +17,3 @@ for i in range(10,354294):
     if (i==sum_of_power_digits(i,5)):
         sum_nums += i
 print(sum_nums)
-
-save_time(30,time()-start)

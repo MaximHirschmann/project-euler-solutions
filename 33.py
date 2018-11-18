@@ -1,8 +1,4 @@
-from Utils import save_time
-from time import time
-from Utils import gcd
-
-start = time()
+from math import gcd
 
 def cancel_digits(a,b):
     a,b = str(a),str(b)
@@ -30,6 +26,4 @@ for a in range(11,100):
 gcd_res = gcd(numerator,denominator)
 numerator = int(numerator/gcd_res)
 denominator = int(denominator/gcd_res)
-print('result',denominator)
-
-save_time(33,time()-start)
+print('Result:',denominator)

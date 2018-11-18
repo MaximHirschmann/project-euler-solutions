@@ -1,8 +1,4 @@
-from time import time
-from Utils import save_time
 import sys
-
-start = time()
 
 with open(sys.path[0]+"/storage/8.txt") as f:
     number = f.read().replace("\n","")
@@ -16,6 +12,3 @@ for i in range(len(number)-adjacent_digits):
     if product > max:
         max = product
 print(max)
-
-end = time()
-save_time(8,end-start)

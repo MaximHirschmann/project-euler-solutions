@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 def pentagonalNumber(n):
     return int((3*n*n-n)/2)
 
@@ -23,4 +18,3 @@ def find():
 
 res = find()
 print(res[0]-res[1])
-save_time(44, time()-start)

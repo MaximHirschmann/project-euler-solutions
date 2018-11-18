@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 def fibonacci(n):
     if n in table:
         return table[n]
@@ -18,5 +13,3 @@ while True:
         print(i)
         break
     i += 1
-
-save_time(25,time()-start)

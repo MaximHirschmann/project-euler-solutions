@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 def isPandigital(s):
     numbers={i:False for i in range(1,10)}
     for j in s:
@@ -21,4 +16,3 @@ for small in range(1,100):
                 products.add(product)
 
 print(sum(products))
-save_time(32,time()-start)

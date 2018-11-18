@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 def isPandigital(s):
     numbers={i:False for i in range(1,10)}
     for j in s:
@@ -33,4 +28,3 @@ for i in reversed(range(192,342)):
         max_3 = i
 
 print(max(pandigital_multiplies))
-save_time(38,time()-start)
