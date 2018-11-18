@@ -1,3 +1,11 @@
-from Utils import sieve_of_eratosthenes
+def sup(n):
+    print(n,'super')
+    return 'sup'
+def testing(n):
+    print(n, 'testing')
+    return 'testing'
 
-print(sieve_of_eratosthenes(100, lower_limit=10,negatives=True))
+num = 2
+l = [sup(num),testing(num)]
+for i in l:
+    i()
