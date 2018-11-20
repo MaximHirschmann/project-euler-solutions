@@ -1,6 +1,6 @@
 def isLychrel(n):
     reverse = int(str(n)[::-1])
-    for _ in range(51):
+    for _ in range(50):
         n += reverse
         reverse = int(str(n)[::-1])
         if n == reverse:
