@@ -1,7 +1,5 @@
 from itertools import product
 
-start = time()
-
 def to_text(values, key):
     s = ''
     for i, ascii in enumerate(values):
