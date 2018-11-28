@@ -19,8 +19,8 @@ while i > 1:
             pyramid[i-2][j] += pyramid[i-1][j]
         else:
             pyramid[i-2][j] += pyramid[i-1][j+1]
-    pyramid = pyramid[:len(pyramid)-1]
-    i = len(pyramid)
+    i -= 1
+    pyramid = pyramid[:i]
     printpyramid(pyramid)
 
 print('Number:', pyramid[0][0])
