@@ -68,7 +68,7 @@ def sieve_of_eratosthenes(limit,lower_limit=2,negatives = False):
         numbers.append(a)
     while p*p<limit:
         p=numbers[count]
-        multiple=p+p
+        multiple=p+p 
         while multiple<=limit:
             numbers[multiple]=0
             multiple+=p
