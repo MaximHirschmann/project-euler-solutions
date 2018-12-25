@@ -1,15 +1,8 @@
-from math import sqrt
-from math import gcd
+from math import sqrt, gcd
 
 def is_square(n):
-    if n in squares:
-        return True
-    x = 0
-    while x*x <= n:
-        squares.append(x*x)
-        x += 1
-    return n in squares
-squares = []
+    root = sqrt(n)
+    return int(root) == root
 
 # returns sequence of first 100 numbers
 def continued_fraction(n):
@@ -45,7 +38,7 @@ max_index = 0
 for D in range(2,1000):
     if not is_square(D):
         con = continued_fraction(D)
-        for j in range(1,len(con)):
+        for j in range(1, len(con)):
             frac = to_fraction(con[:j])
             # frac[0] = x, frac[1] = y
             if frac[0]*frac[0] - D * frac[1]*frac[1] == 1:

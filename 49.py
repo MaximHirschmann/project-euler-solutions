@@ -1,7 +1,4 @@
 from Utils import sieve_of_eratosthenes
-from Utils import bisect
-from itertools import product
-from sympy import isprime
 
 def samedigits(a,b):
     a = sorted(str(a))
@@ -17,8 +14,7 @@ for i in range(len(sieve)-1):
         if samedigits(prime1,prime2):
             prime3 = 2*prime2 - prime1
             # test if prime3 is prime
-            if prime3 in sieve:
-                if samedigits(prime1,prime3):
-                    concat = str(prime1)+str(prime2)+str(prime3)
-                    if concat != '148748178147':
-                        print(concat)
+            if prime3 in sieve and samedigits(prime1,prime3):
+                concat = str(prime1)+str(prime2)+str(prime3)
+                if concat != '148748178147':
+                    print(concat)

@@ -1,5 +1,4 @@
 def collatz_length(n):
-    global table
     save = n
     count = 0
     while True:

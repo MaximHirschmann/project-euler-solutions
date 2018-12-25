@@ -1,6 +1,5 @@
 # same as 76 only nums is different
 from Utils import sieve_of_eratosthenes
-
 limit = 1000
 table = {i:0 for i in range(-limit+1,limit+1)}
 table[0] = 1

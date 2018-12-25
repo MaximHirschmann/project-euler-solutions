@@ -1,5 +1,1 @@
-combinations = set()
-for a in range(2,101):
-    for b in range(2,101):
-        combinations.add(a**b)
-print(len(combinations))
+print(len(set([a**b for a in range(2, 101) for b in range(2, 101)])))

@@ -1,8 +1,4 @@
 from math import ceil
-from time import time
-from Utils import save_time
-
-start = time()
 
 def frac(d):
     sieve = [0] * (d + 1)
@@ -23,4 +19,3 @@ def frac(d):
     return sum(sieve)
 
 print(frac(12000))
-save_time(73, time()-start)

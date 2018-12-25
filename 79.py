@@ -14,7 +14,7 @@ for num in nums:
         for digit_before in range(digit):
             count[num[digit]].add(num[digit_before])
 # sorts keys by length of values
-temp = sorted(count.items(), key=lambda kv: len(kv[1]))
+temp = sorted(count.items(), key = lambda kv: len(kv[1]))
 # joins keys
 res = ''.join([item[0] for item in temp])
 print(res)

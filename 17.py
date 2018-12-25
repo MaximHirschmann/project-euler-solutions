@@ -18,4 +18,4 @@ for i in range(100,1000):
         count += ones[hundred] + 10 + ones[leftover] # 10 because of: 'hundred and'
 
 count += 11 # one thousand
-print('Number: ', count)
+print(count)

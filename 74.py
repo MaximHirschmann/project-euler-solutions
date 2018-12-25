@@ -6,7 +6,7 @@ def sum_factorial_digits(n):
 factorials = {str(i): factorial(i) for i in range(10)}
 lengths = {}
 count = 0
-for i in range(1,1000000):
+for i in range(1, 1000000):
     res = i
     chain = [i]
     length = 1

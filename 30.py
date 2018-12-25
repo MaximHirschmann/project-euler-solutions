@@ -1,10 +1,5 @@
 def sum_of_power_digits(n, power):
-    digits = []
-    while n != 0:
-        mod = n % 10
-        digits.append(mod)
-        n = int((n-mod)/10)
-    digits = tuple(sorted(digits))
+    digits = tuple(sorted([int(i) for i in str(n)]))
     if digits in table:
         return table[digits]
     res = sum([i**power for i in digits])
@@ -12,8 +7,4 @@ def sum_of_power_digits(n, power):
     return res
 
 table = {}
-sum_nums = 0
-for i in range(10,354294):
-    if (i==sum_of_power_digits(i,5)):
-        sum_nums += i
-print(sum_nums)
+print(sum(i for i in range(10,354294) if i == sum_of_power_digits(i,5)))

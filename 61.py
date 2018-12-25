@@ -1,46 +1,3 @@
-def get_length(num):
-    types = [num[0]]
-    chain = [num]
-    for a in relation[num]:
-        if a in chain or a[0] in types:
-            continue
-        types.append(a[0])
-        chain.append(a)
-        for b in relation[a]:
-            if b in chain or b[0] in types:
-                continue
-            types.append(b[0])
-            chain.append(b)
-            for c in relation[b]:
-                if c in chain or c[0] in types:
-                    continue
-                types.append(c[0])
-                chain.append(c)
-                for d in relation[c]:
-                    if d in chain or d[0] in types:
-                        continue
-                    types.append(d[0])
-                    chain.append(d)
-                    for e in relation[d]:
-                        if e in chain or e[0] in types:
-                            continue
-                        types.append(e[0])
-                        chain.append(e)
-                        for f in relation[e]:
-                            if f == num:
-                                return [num,a,b,c,d,e,f,]
-                        types.pop(-1)
-                        chain.pop(-1)
-                    types.pop(-1)
-                    chain.pop(-1)
-                types.pop(-1)
-                chain.pop(-1)
-            types.pop(-1)
-            chain.pop(-1)
-        types.pop(-1)
-        chain.pop(-1)
-    return 0
-
 nums = [
     [(x*x + x)//2 for x in range(45,141)],
     [x*x for x in range(32,100)],
@@ -50,22 +7,45 @@ nums = [
     [3*x*x -2*x for x in range(19,59)]
 ]
 
+cycle_length = 6
 relation = {}
 # generate all keys
 for i, a in enumerate(nums):
     for b in a:
         relation[(i, b%100)] = []
 # generate all values
-for own_type, a in enumerate(nums):
-    for b in a:
-        for type_pair in range(6):
-            if own_type != type_pair:
-                if (type_pair, b // 100) in relation:
-                    relation[(type_pair, b // 100)] += [(own_type, b%100)]
+for own_type, values in enumerate(nums):
+    for v in values:
+        for partner_type in range(cycle_length):
+            if own_type != partner_type:
+                partner = (partner_type, v // 100)
+                if partner in relation:
+                    relation[partner].append((own_type, v%100))
 
-for k, v in relation.items():
-    res = get_length(k)
-    if res:
-        # get sum of numbers
-        print(sum(int(str(res[i-1][1]) + str(res[i][1])) for i in reversed(range(1, len(res)))))
-        break
+def solve(types, chain):
+    ''' 
+    Solves for the chain of a cycle of the length cycle_length given a first entry in types and chain\n
+    Returns the chain if a solution is found otherwise False\n
+    Example:
+        result = solve([2], [86])
+    '''
+    if len(chain) > cycle_length:
+        return False
+    # required length, includes all types, if the first value is the next of the last
+    if (len(chain) == cycle_length and all(i in types for i in range(cycle_length)) and (types[0],chain[0]) in relation[(types[-1],chain[-1])]):
+        return chain
+    for type, num in relation[(types[-1],chain[-1])]:
+        if type not in types or num not in chain:
+            res = solve(types+[type], chain+[num])
+            if res:
+                return res
+    return False
+
+def run():
+    for v in relation.values():
+        for type, num in v:
+            res = solve([type],[num])
+            if res:
+                return sum(res)*100 + sum(res)
+
+print(run())

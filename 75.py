@@ -14,6 +14,6 @@ def find_single_triples(limit):
                 k_max = limit // perimeter
                 for k in range(1, k_max + 1):
                     solutions.append(k * perimeter)
-    return sum(1 for v in Counter(solutions).values() if v == 1)
+    return sum(v == 1 for v in Counter(solutions).values())
 
 print(find_single_triples(1500000))

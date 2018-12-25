@@ -1,6 +1,6 @@
 from sympy import isprime
 
-# counts prime numbers up to n
+# returns n'th prime
 def prime_numbers(n):
     count = 0
     i = 0

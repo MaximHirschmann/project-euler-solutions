@@ -21,4 +21,4 @@ for i in reversed(sieve):
     if i < res:
         break
 
-print('Result: Number',res_index,'with a cycle length of',res)
+print(res_index)

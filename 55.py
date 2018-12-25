@@ -7,4 +7,4 @@ def isLychrel(n):
             return False
     return True
 
-print(sum([1 for i in range(10000) if isLychrel(i)]))
+print(sum(isLychrel(i) for i in range(10000)))

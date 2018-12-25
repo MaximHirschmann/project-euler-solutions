@@ -1,5 +1,6 @@
 import sys
 from sympy import isprime
+from sympy.ntheory import factorint, primefactors
 
 def save_time(project_number, new_time, path = sys.path[0]+"/times.txt"):
     with open(path,"r") as f:
@@ -46,7 +47,7 @@ def next_factor(n):
             k = 0
             while (k<r and g==1):
                     ys = y
-                    for i in range(min(m,r-k)):
+                    for _ in range(min(m,r-k)):
                             y = ((y*y)%n+c)%n
                             q = q*(abs(x-y))%n
                     g = gcd(q,n)
@@ -88,34 +89,19 @@ def sieve_of_eratosthenes(limit,lower_limit=2,negatives = False):
     return []
     
 def divisor_function(n):
-    from sympy.ntheory import factorint
-
-    factors = factorint(n)
-    product = 1
-    for key in factors.keys():
-        product = product * (factors[key] + 1)
-    return product
+    return product(v+1 for v in factorint(n).values())
 
 # returns sum of the proper divisors of a number n including n 
 # uses the formulas:
 # σ(p^a) = (p^(a+1) − 1)/(p − 1)
 # σ(a×b×...)=σ(a)×σ(b)×...
 def sum_of_proper_divisors(n):
-    from numpy import prod
-    from sympy import factorint
-
     factors = factorint(n)
-    return prod([int((i[0]**(i[1]+1)-1)/(i[0]-1)) for i in factors.items()])
+    return product([int((i[0]**(i[1]+1)-1)/(i[0]-1)) for i in factors.items()])
 
 # euler totient function, number of numbers relative prime to n
 def euler_totient(n):
-    from sympy import factorint
-
-    factors = factorint(n)
-    prod = n
-    for i in factors.keys():
-        prod *= (1-(1/i))
-    return int(prod)
+    return int(product((1-(1/i)) for i in primefactors(n)) * n)
 
 # returns unsorted list of integers which are divisors of n
 def divisors_of(n):
@@ -153,25 +139,20 @@ def gcd(a,b):
     return a
     
 def isPandigital(s):
-    numbers={i:False for i in range(1,10)}
+    numbers = {i:False for i in range(1,10)}
     for j in s:
-        numbers[int(j)]=True
-    for i in range(1,10):
-        if not numbers[i]:
-            return False
-    return True
+        numbers[int(j)] = True
+    return False not in numbers.values()
 
 def isPalindrom(s):
-    if(s==s[::-1]):
-      return True
-    return False
+    return s==s[::-1]
 
 # returns index of value in a sorted list, if value not in list returns -1
 def bisect(value,list):
     left = 0
     right = len(list) - 1
     while left <= right:
-        check = int((left+right)/2)
+        check = (left+right)//2
         if list[check] == value:
             return check
         elif list[check] < value:
@@ -179,3 +160,34 @@ def bisect(value,list):
         else:
             right = check - 1
     return -1
+
+def product(iterable):
+    res = 1
+    for i in iterable:
+        res = res*i
+    return res
+
+def triangleNumber(n):
+    return n*(n-1)/2
+
+def isTriangleNumber(y):
+    x = -0.5 + (0.25+2*y)**(1/2)
+    if int(x) == x:
+        return True
+    return False
+
+def name_score(name):
+    return sum(ord(i)-64 for i in name)
+
+def pentagonalNumber(n):
+    return int((3*n*n-n)/2)
+
+def isPentagonalNumber(n):
+    return (1+(1+24*n)**(0.5)) % 6 == 0
+
+def digitsum(n):
+    s = 0
+    while n:
+        s += n % 10
+        n //= 10
+    return s

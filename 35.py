@@ -3,7 +3,6 @@ from Utils import sieve_of_eratosthenes
 def rotate(s):
     return s[len(s)-1]+s[:len(s)-1]
 
-
 sieve = sieve_of_eratosthenes(999999)
 table = {k:False for k in range(1000000)}
 for i in sieve:

@@ -5,22 +5,18 @@ from sympy import isprime
 def check(x,y):
     if (x,y) in pairs:
         return pairs[(x,y)]
-    sx=str(x)
-    sy=str(y)
+    sx, sy = str(x), str(y)
     answer = isprime(int(sx+sy)) and isprime(int(sy+sx)) 
     pairs[(x,y)] = answer
     return answer
 
 pairs = {}
-# primes up to 25000
-sieve = sieve_of_eratosthenes(25000)
-# current minmum, in the beginning random high number
-res = 40000
+sieve = sieve_of_eratosthenes(10000)
+res = 40000 # current minmum, in the beginning random high number
 length = len(sieve)
 # i1, i2, i3, i4, i5 are indices
 # a, b, c, d, e are numbers
-for i1 in range(length):
-    a = sieve[i1]
+for i1, a in enumerate(sieve):
     # a has to be smaller than one-fifth of the current minimum
     if a*5 >= res:
         break

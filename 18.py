@@ -1,26 +1,12 @@
-pyramid = []
 with open("storage//18_pyramid.txt",'r') as f:
-    for line in f:
-        temp = line.replace("\n","").split(" ")
-        for x in range(len(temp)):
-            temp[x] = int(temp[x])
-        pyramid.append(temp)
+    pyramid = [[int(i) for i in line.replace("\n","").split(" ")] for line in f]
 
-def printpyramid(pyramid):
-    print("\n")
-    for i in pyramid:
-        print(i)
-
-printpyramid(pyramid)
-i = len(pyramid)
-while i > 1:
+for i in reversed(range(2, len(pyramid)+1)):
     for j in range(len(pyramid[i-2])):
         if pyramid[i-1][j] > pyramid[i-1][j+1]:
             pyramid[i-2][j] += pyramid[i-1][j]
         else:
             pyramid[i-2][j] += pyramid[i-1][j+1]
-    i -= 1
-    pyramid = pyramid[:i]
-    printpyramid(pyramid)
+    pyramid = pyramid[:i-1]
 
-print('Number:', pyramid[0][0])
+print(pyramid[0][0])

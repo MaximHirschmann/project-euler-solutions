@@ -5,7 +5,7 @@ def remove_left_digit(n):
     return int(str(n)[1:])
 
 def is_left_truncatable_prime(n):
-    for i in range(len(str(n))-1):
+    for _ in range(len(str(n))-1):
         n = remove_left_digit(n)
         if not isprime(n):
             return False
@@ -16,7 +16,7 @@ add = ['1','3','7','9']
 products = [''.join(i) for i in product(primes,add)]
 candidates = []
 
-for i in range(7):
+for _ in range(7):
     for j in reversed(products):
         if not isprime(j):
             products.remove(j)

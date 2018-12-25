@@ -14,21 +14,18 @@ with open('storage//54_poker.txt','r') as f:
 # games = [game1,game2,game3]
 # game1 = [player1, player2]
 # player1 = [values, colors]
-# values = [1,5,2,7,5]  colors = [0,3,2,2,1]
-def value(cards):
-    values = Counter(cards[0])
-    colors = Counter(cards[1])
-
+# values = {5:1, 6:2, 10:1, 11:1}  colors = {0:1,1:1,2:2}
+def value(player):
+    values = Counter(player[0])
+    colors = Counter(player[1])
+    
     isstraight = sorted(values.keys()) == list(range(min(values.keys()), max(values.keys())+1))
     samesuit = 5 in colors.values()
     # flush
     if samesuit and not isstraight:
         return 500 + max(values.keys())
 
-    maxcounter = 0
-    for v in values.values():
-        if v > maxcounter:
-            maxcounter = v
+    maxcounter = max(values.values())
     # High Card, Straight, Straight Flush, Royal Flush
     if maxcounter == 1:
         if isstraight:
@@ -48,13 +45,9 @@ def value(cards):
             return max(values.keys())
     # One Pair, Two Pairs
     elif maxcounter == 2:
-        maxpair = 0
-        numberofpairs = 0
-        for k,v in values.items():
-            if v == 2:
-                numberofpairs += 1
-                if k > maxpair:
-                    maxpair = k
+        pairs = [k for k,v in values.items() if v == 2]
+        maxpair = max(pairs)
+        numberofpairs = (len(pairs))
         # One Pair
         if numberofpairs == 1:
             return 100 + maxpair
@@ -64,13 +57,9 @@ def value(cards):
         
     # Three of a kind, Full House
     elif maxcounter == 3:
-        ispair = False
-        for v in values.values():
-            if v == 2:
-                ispair = True
-
+        haspair = not all(v != 2 for v in values.values())
         # Full House
-        if ispair:
+        if haspair:
             return 600 + max([k for k,v in values.items() if v == 3])
         # Three of a kind
         else:
@@ -80,9 +69,5 @@ def value(cards):
     else:
         return 700 + max([k for k,v in values.items() if v == 4])
     return 0
-    
-count = 0
-for game in games:
-    if value(game[0]) > value(game[1]):
-        count += 1
-print(count)
+
+print(sum(value(game[0]) > value(game[1]) for game in games))

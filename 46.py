@@ -1,10 +1,9 @@
 from Utils import sieve_of_eratosthenes
-from math import sqrt
 
 limit = 10000
 
 sieve = sieve_of_eratosthenes(limit)
-twice_squares = [2*(i**2) for i in range(int(sqrt(limit)))]
+twice_squares = [2*(i**2) for i in range(int((limit)**(1/2)))]
 
 for i in range(3,int(0.9*limit),2):
     possible = False

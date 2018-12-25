@@ -10,6 +10,7 @@ for k,v in count.items():
     if v == 5:
         res = k
         break
+
 # prints smallest number with those digits
 for i in range(len(digits)):
     if digits[i] == res:

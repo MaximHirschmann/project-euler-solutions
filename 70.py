@@ -1,5 +1,4 @@
 # the less primefactors a number has the closer is the euler-totient to it
-# can not be prime because p and p-1 do not have the same-digits
 # checking every possible number with two factors yields the correct result
 from sympy import factorint
 from math import sqrt
@@ -14,7 +13,7 @@ def samedigits(a,b):
     return sorted([int(i) for i in str(a)]) == sorted([int(i) for i in str(b)])
 
 limit = 10**7
-sieve = sieve_of_eratosthenes(int(sqrt(limit)*2))
+sieve = sieve_of_eratosthenes(4000)
 min = 1000
 for i, prime1 in enumerate(sieve):
     for j in range(i, len(sieve)):
@@ -26,5 +25,4 @@ for i, prime1 in enumerate(sieve):
         if product/eul < min and samedigits(product, eul):
             min = (product)/eul
             min_prod = product
-
 print(min_prod)

@@ -1,10 +1,5 @@
 import random
 
-current = 0
-sides = 4
-count = {i:0 for i in range(40)}
-limit = 100000
-
 def roll_dice():
     s = 0
     for _ in range(3):
@@ -42,7 +37,12 @@ def ch():
         else:
             current = (0, 10, 11, 24, 39, 5)[card]
 
-for i in range(limit):
+current = 0
+sides = 4
+count = {i:0 for i in range(40)}
+simulations = 100000
+
+for i in range(simulations):
     value = roll_dice()
     # three doubles
     if value == 0:

@@ -1,8 +1,3 @@
-from Utils import save_time
-from time import time
-
-start = time()
-
 gridsize = 50
 count = 0
 for x1 in range(gridsize+1):
@@ -22,4 +17,3 @@ for x1 in range(gridsize+1):
                         if sides[0] + sides[1] == sides[2]:
                             count += 1
 print(count)
-save_time(91, time()-start)

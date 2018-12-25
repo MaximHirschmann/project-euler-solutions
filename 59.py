@@ -15,7 +15,5 @@ with open("storage//59_encryption.txt","r") as f:
 for key in product(range(97,123), repeat = 3):
     text = to_text(encrypted, key)
     if text.find(' the ') >= 0:
-        print('KEY: ',''.join([chr(i) for i in key]))
-        print('TEXT: ',text)
-        print('SUM: ', sum_text(text))
+        print(sum_text(text))
         break

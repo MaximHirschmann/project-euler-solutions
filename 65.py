@@ -1,11 +1,5 @@
 from math import gcd
-
-def sum_digits(n):
-    s = 0
-    while n:
-        s += n % 10
-        n //= 10
-    return s
+from Utils import digitsum
 
 def to_fraction(sequence):
     last = [1, sequence[-1]]
@@ -20,17 +14,16 @@ def to_fraction(sequence):
         divisor = gcd(last[0], last[1])
         last = [last[0]//divisor, last[1]//divisor]
 
-    return  [last[1], last[0]]
+    return  (last[1], last[0])
 
 
 limit = 100
 # there is a pattern in the continued fraction
-# it starts with 1,2,1 and every third number after that gets increased by 2
+# 2,1,2,1,1,4,1,1,6,1,1,8 ...
 sequence = [2, 1]
 for i in range(2, limit):
     if i % 3 == 2:
         sequence.append((i//3) * 2 + 2)
     else:
         sequence.append(1)
-
-print(sum_digits(to_fraction(sequence)[0]))
+print(digitsum(to_fraction(sequence)[0]))

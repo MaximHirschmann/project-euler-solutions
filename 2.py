@@ -1,8 +1,7 @@
 def fib(k):
-    global table
-    try:
+    if k in table:
         return table[k]
-    except KeyError:
+    else:
         value = fib(k-1)+fib(k-2)
         table[k] = value
         return value
@@ -18,4 +17,4 @@ while True:
         sum += value
     count += 1
 
-print("The sum is: ",sum)
+print(sum)

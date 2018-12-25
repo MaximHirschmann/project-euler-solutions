@@ -1,14 +1,6 @@
-def isPandigital(s):
-    numbers={i:False for i in range(1,10)}
-    for j in s:
-        numbers[int(j)]=True
-    for i in range(1,10):
-        if not numbers[i]:
-            return False
-    return True
+from Utils import isPandigital
 
-
-pandigital_multiplies = []
+pandigital_multiples = []
 max_3 = 0
 max_4 = 0
 for i in reversed(range(5000,10000)):
@@ -16,7 +8,7 @@ for i in reversed(range(5000,10000)):
     if i <= max_4:
         break
     if isPandigital(s):
-        pandigital_multiplies.append(int(s))
+        pandigital_multiples.append(int(s))
         max_4 = i
 
 for i in reversed(range(192,342)):
@@ -24,7 +16,7 @@ for i in reversed(range(192,342)):
     if i <= max_3:
         break
     if isPandigital(s):
-        pandigital_multiplies.append(int(s))
+        pandigital_multiples.append(int(s))
         max_3 = i
 
-print(max(pandigital_multiplies))
+print(max(pandigital_multiples))

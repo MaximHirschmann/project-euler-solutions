@@ -14,8 +14,7 @@ for start in range(len(sieve)-50):
         if add >= 1000000:
             break
         length = end-start
-        if max < length:
-            if isprime(add):
-                max = length
-                max_number = add
+        if max < length and isprime(add):
+            max = length
+            max_number = add
 print(max_number)
