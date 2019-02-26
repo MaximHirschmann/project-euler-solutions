@@ -4,7 +4,8 @@ from Utils import sieve_of_eratosthenes
 def recur_len(d):
     if d % 2 != 0 and d % 5 != 0 and d != 0 and d != 1:
         n = 1
-        # every fraction 1/d can be written as x/(10**n - 1)
+        # every fraction 1/d can be written as x/(10**n - 1) where n is the length 
+        # of the recurring cycle
         while (10**n - 1) % d != 0:
             n += 1
         return n

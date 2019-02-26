@@ -191,3 +191,40 @@ def digitsum(n):
         s += n % 10
         n //= 10
     return s
+
+def miller_rabin(n, bases):
+    temp = n-1
+    s = 0
+    while temp%2 == 0:
+        s += 1
+        temp = temp//2
+    d = (n-1)//(2**s)
+    for a in bases:
+        print(a)
+        if pow(a,d,n) != 1:
+            print("res", pow(a,d,n))
+            print("first test true")
+            if all(pow(a, (2**r)*d, n) != n-1 for r in range(s)):
+                return False
+            print("second test false")
+        else:
+            print("res", pow(a,d,n))
+            print("first test false")
+    return True
+import sys
+
+sys.setrecursionlimit(2000)
+def poll_g(x, n):
+    return (x*x+1)%n
+
+def pollard_rho(n):
+    x, y, d = 2, 2, 1
+    while d==1:
+        x = poll_g(x, n)
+        y = poll_g(poll_g(y, n), n)
+        d = gcd(abs(x-y), n)
+        print(x,y,d)
+    if d == n:
+        return pollard_rho(n)
+    else:
+        return d

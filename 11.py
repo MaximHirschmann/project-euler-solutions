@@ -20,19 +20,18 @@ class Grid:
                     if prod > self.max:
                         self.max = prod
         def max_diagonal_left(self):
-            for i in range(len(grid)-self.adjacant_digits+1):
+            for i in range(self.adjacant_digits-1, len(grid)-self.adjacant_digits+1):
                 for j in range(self.adjacant_digits-1,len(self.grid[0])):
-                    for k in range(self.adjacant_digits):
-                        prod = Utils.product(self.grid[i-k][j-k] for k in range(self.adjacant_digits))
-                        if prod > self.max:
-                            self.max = prod
+                    prod = Utils.product(self.grid[i-k][j-k] for k in range(self.adjacant_digits))
+                    print(prod)
+                    if prod > self.max:
+                        self.max = prod
         def max_diagonal_right(self):
             for i in range(len(grid)-self.adjacant_digits+1):
                 for j in range(len(self.grid[0])-self.adjacant_digits+1):
-                    for k in range(self.adjacant_digits):
-                        prod = Utils.product(self.grid[i-k][j+k] for k in range(self.adjacant_digits))
-                        if prod > self.max:
-                            self.max = prod
+                    prod = Utils.product(self.grid[i-k][j+k] for k in range(self.adjacant_digits))
+                    if prod > self.max:
+                        self.max = prod
         max_right(self)
         max_down(self)
         max_diagonal_left(self)

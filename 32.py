@@ -6,5 +6,5 @@ for small in range(1,100):
         product = small * big
         if len(str(product)) == 4 and isPandigital(str(small)+str(big)+str(product)):
             products.add(product)
-
+            print(small, "*", big, "=", product)
 print(sum(products))

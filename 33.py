@@ -11,8 +11,10 @@ for cancel in range(1, 10):
             fract = num / denom
             simp = i / j    # fraction after digit 'cancel' is removed
             if fract < 1 and fract == simp:
+                print(numerator, denominator)
                 numerator *= num
                 denominator *= denom
 
+print(numerator, denominator)
 result = denominator // gcd(numerator, denominator)
 print(result)

@@ -2,7 +2,7 @@
 def spiral(n):
     if n in table:
         return table[n]
-    res = spiral(n-1)+2*(int((n-1)/4))+2
+    res = spiral(n-1) + 2*(int((n-1)/4))+2
     table[n] = res
     return res
 

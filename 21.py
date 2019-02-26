@@ -1,4 +1,5 @@
 from Utils import sum_of_proper_divisors
+from time import time
 
 sums = {0:0}
 

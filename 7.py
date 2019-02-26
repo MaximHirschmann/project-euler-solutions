@@ -3,7 +3,7 @@ from sympy import isprime
 # returns n'th prime
 def prime_numbers(n):
     count = 0
-    i = 0
+    i = 2
     while True:
         if isprime(i):
             count += 1

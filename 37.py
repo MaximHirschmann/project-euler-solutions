@@ -24,3 +24,7 @@ for _ in range(7):
     products = [''.join(k) for k in product(products,add)]
 
 print(sum(int(i) for i in candidates if is_left_truncatable_prime(int(i))))
+
+for i in candidates:
+    if is_left_truncatable_prime(int(i)):
+        print(i)

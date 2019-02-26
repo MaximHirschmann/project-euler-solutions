@@ -3,7 +3,7 @@ from Utils import product
 s = ""
 length = 0
 number = 0
-while length <= 1000000:
+while length <= 100000:
     s += str(number)
     length += len(str(number))
     number += 1

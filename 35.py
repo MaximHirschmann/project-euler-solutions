@@ -9,7 +9,7 @@ for i in sieve:
     table[i] = True
 
 circular_primes = []
-count = 0
+
 for i in sieve:
     if i not in circular_primes:
         s = str(i)
