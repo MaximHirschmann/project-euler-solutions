@@ -1,4 +1,3 @@
-from math import sqrt
 from Utils import isTriangleNumber, name_score
 
 def isTriangleWord(s):

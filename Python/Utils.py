@@ -172,9 +172,7 @@ def triangleNumber(n):
 
 def isTriangleNumber(y):
     x = -0.5 + (0.25+2*y)**(1/2)
-    if int(x) == x:
-        return True
-    return False
+    return int(x) == x
 
 def name_score(name):
     return sum(ord(i)-64 for i in name)

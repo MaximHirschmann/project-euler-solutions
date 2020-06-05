@@ -457,4 +457,24 @@ int toDez(string s, int b) {
   return n;
 }
 
+bool isPerfectSquare(int n) {
+  int root = sqrt(n) + 0.5;
+  return root*root == n;
+}
+
+int pentagonalNumber(int n) {
+  return (int) ((3*n*n-n)/2);
+}
+
+bool isPentagonalNumber(int n) {
+  if (n == 0)
+    return true;
+    
+  int root = sqrt(1+24*n);
+  if (root * root != 1+24*n) {
+    return false;
+  }
+  root++;
+  return root % 6  == 0;
+}
 #endif

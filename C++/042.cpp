@@ -1,35 +1,54 @@
 #include <iostream>
+#include <string>
+#include <fstream>
+#include <vector>
+#include <cmath>
 
 using namespace std;
 
-int main() {
-  // length of the words from 1-100
-  // first 20 are given manually, the rest will be calculated
-  int ones[100] = {0,3,3,5,4,4,3,5,5,4,3,6,6,8,8,7,7,9,8,8};
-  // length of "forty" and etc.
-  int tens[10] = {0,4,6,6,5,5,5,7,6,6};
-  int result = 0;
-  // 1-20
-  for (auto i: ones) {
-    result += i;
+int nameScore(string s) {
+  int sum = 0;
+  for (auto c: s) {
+    sum += (int) c - 64; // 64 because ascii of A = 65
   }
-  // 20-100
-  for (int ten=2; ten<10; ten++) {
-    for (int one=0; one<10; one++) {
-      int length = tens[ten] + ones[one];
-      ones[10*ten+one] = length;
-      result += length;
+  return sum;
+}
+
+bool isPerfectSquare(int n) {
+  int root = sqrt(n) + 0.5;
+  return root*root == n;
+}
+
+bool isTriangleNumber(int n) {
+  return isPerfectSquare(8*n+1);
+}
+
+bool isTriangleWord(string s) {
+  return isTriangleNumber(nameScore(s));
+}
+
+int main() {
+  vector<string> words;
+
+  ifstream file;
+  file.open("storage/42.txt");
+  char c;
+  string word = "";
+  while (file >> c) {
+    if ((int) c == 44) { // if "," begin new word
+      words.push_back(word);
+      word = "";
+    }
+    else if ((int) c != 34) { // if not " then add char to string
+      word += c;
     }
   }
-  // 100-1000
-  for (int i=100; i<1000; i++) {
-    int last = result;
-    int hundred = i/100;
-    int rest = i%100;
-    if (rest == 0)
-      result += ones[hundred] + 7; // 7 becaufe of: "hundred"
-    else
-      result += ones[hundred] + 10 + ones[rest]; // 10 because of "hundred and"
+
+  int count = 0;
+
+  for (auto s: words) {
+      if (isTriangleWord(s))
+        count += 1;
   }
-  cout << result + 11; // + "one thousand"
+  cout << count << "\n";
 }

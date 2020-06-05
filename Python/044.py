@@ -12,3 +12,5 @@ def find():
         i += 1
 
 print(find())
+for i in range(100):
+    print(i, pentagonalNumber(i))
