@@ -1,6 +1,7 @@
 import sys
 from sympy import isprime
 from sympy.ntheory import factorint, primefactors
+from collections import defaultdict
 
 def save_time(project_number, new_time, path = sys.path[0]+"/times.txt"):
     with open(path,"r") as f:
