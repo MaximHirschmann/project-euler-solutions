@@ -227,3 +227,14 @@ def pollard_rho(n):
         return pollard_rho(n)
     else:
         return d
+
+def primefactors_to_str(factors):
+    res = ""
+    for p, k in factors.items():
+        if res != "":
+            res += " * "
+        if k > 1:
+            res += str(p) + "^" + str(k)
+        else:
+            res += str(p)
+    return res    
